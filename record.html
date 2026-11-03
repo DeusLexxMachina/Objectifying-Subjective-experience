@@ -155,6 +155,14 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 .bindgrid .bc.good{border-left:3px solid var(--accent)}
 .bindgrid .bc.bad{border-left:3px solid var(--muted)}
 @media (max-width:620px){.bindgrid{grid-template-columns:1fr}.bindgrid .bh{display:none}.bindgrid .bl{padding:8px 0 0}.bindgrid .bc.good:before{content:"Resolved: ";font-weight:600;color:var(--ink)}.bindgrid .bc.bad:before{content:"Did not resolve: ";font-weight:600;color:var(--ink)}}
+.qbox{border:1px solid var(--rule);background:var(--surface);border-radius:var(--radius);padding:14px 18px;margin:4px 0 20px;display:grid;grid-template-columns:90px 1fr;gap:8px 14px;font-size:15px}
+.qbox .lab{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.qbox .qq{font-weight:600}
+.qbox .ww{color:var(--ink2)}
+@media (max-width:560px){.qbox{grid-template-columns:1fr;gap:2px}.qbox .ww{margin-bottom:0}.qbox .qq{margin-bottom:8px}}
+.concl{border:1px solid var(--accent);border-left-width:4px;background:var(--surface);border-radius:var(--radius);padding:16px 20px;margin:28px 0 0}
+.concl h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 8px;font-weight:650}
+.concl ul{margin:0;padding-left:18px}.concl li{margin:0 0 6px;max-width:780px}
 @media print{nav.steps,.toolbar,.pager,.tip{display:none!important}section.panel{display:block!important;break-inside:avoid-page;margin-bottom:32px}}
 </style>
 </head>
@@ -163,7 +171,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
   <p class="eyebrow">Record review · July 31 to October 30, 2026 · Prepared November 2, 2026</p>
   <h1>One DRI's Record</h1>
   <p class="lede">The case behind the team review, for DRI H. The same coding, period and labels as the team record. Roles are used in place of names, and states are not named.</p>
-  <div class="toplinks"><a class="btnlink" href="index.html">Team record</a><span class="btnlink primary">One DRI's record (DRI H)</span></div>
+  <div class="toplinks"><a class="btnlink" href="index.html">Start here</a><a class="btnlink" href="team.html">Team record</a><span class="btnlink primary">One DRI's record (DRI H)</span></div>
 </header>
 
 <nav class="steps" aria-label="Sections">
@@ -184,6 +192,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
   <section class="panel" id="reciprocity" data-title="Answering and being answered">
     <p class="kicker"></p>
     <h2>Answering others and being answered</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">Does low resolution run both ways for DRI H?</div><div class="lab">Why</div><div class="ww">If DRI H also left others' questions unresolved, the gap could reflect DRI H's engagement or habits. Measuring both directions rules that explanation in or out.</div></div>
     <p class="sub">For each DRI: the share of questions directed to that DRI by name that were resolved, and the share of that DRI's own ownership questions that were resolved.</p>
     <div class="card">
       <h3>DRI H resolved the largest share of questions directed to a DRI, and had the smallest share of its own ownership questions resolved</h3>
@@ -198,18 +207,103 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
       <li>DRI H's factual questions were resolved 78% of the time (25 of 32), close to the rate for the other DRIs combined (76%).</li>
       <li>Questions were attributed to a DRI only when addressed to that DRI by name. Questions addressed to a group were not attributed.</li>
     </ul>
+    <div class="concl"><h3>Conclusions</h3><ul><li>Questions directed to DRI H were resolved 87% of the time, the highest of the nine DRIs.</li><li>DRI H's own ownership questions were resolved 31% of the time, the lowest among DRIs with five or more.</li><li>The gap runs in one direction.</li></ul></div>
+  </section>
+
+  <section class="panel" id="peer" data-title="DRI A and DRI H">
+    <p class="kicker"></p>
+    <h2>Side by side: DRI A and DRI H</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">When two DRIs start their states at about the same time, do their ownership questions get the same follow-through?</div><div class="lab">Why</div><div class="ww">DRI A is the closest match to DRI H in the review. Both took on their current states in summer 2026, and both states were early-phase from August to October, which holds phase and time on the state roughly constant. Tenure at Ready favors DRI H by about a year. Working time and tone are included because either could explain a difference in answers.</div></div>
+    <p class="sub">The same definitions as the rest of the review. Start dates come from DRI H's account.</p>
+    <div class="card">
+      <h3>How ownership questions were handled</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th class="num">DRI A</th><th class="num">DRI H</th></tr></thead>
+        <tbody>
+          <tr><td>Started current state</td><td class="num">Summer 2026</td><td class="num">Summer 2026</td></tr>
+          <tr><td>Ownership questions resolved, all</td><td class="num">81% (35 of 43)</td><td class="num">31% (10 of 32)</td></tr>
+          <tr><td>Ownership questions resolved, early-phase states only</td><td class="num">78% (21 of 27)</td><td class="num">31% (5 of 16)</td></tr>
+          <tr><td>Factual questions resolved</td><td class="num">69% (20 of 29)</td><td class="num">78% (25 of 32)</td></tr>
+          <tr><td>Questions directed to them, resolved</td><td class="num">74% (37 of 50)</td><td class="num">87% (52 of 60)</td></tr>
+          <tr><td>Ownership questions to engineering, resolved</td><td class="num">71% (15 of 21)</td><td class="num">33% (5 of 15)</td></tr>
+          <tr><td>Ownership questions to the manager, resolved</td><td class="num">3 of 3</td><td class="num">1 of 4</td></tr>
+          <tr><td>Ownership questions to another DRI, resolved</td><td class="num">9 of 10</td><td class="num">1 of 2</td></tr>
+          <tr><td>Ownership questions to a group or channel</td><td class="num">1</td><td class="num">5 (none resolved)</td></tr>
+          <tr><td>Unresolved, as a partial answer or redirect</td><td class="num">0</td><td class="num">11</td></tr>
+        </tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>Time active in Slack, on the 50 weekdays DRI H was in the office</h3>
+      <p class="note" style="margin:0 0 10px">Averages per weekday, each in their own time zone. "Clear difference" means unlikely to be chance (p below 0.05).</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th class="num">DRI A</th><th class="num">DRI H</th><th class="num">Clear difference?</th></tr></thead>
+        <tbody>
+          <tr><td>Days with a post, of 50</td><td class="num">48</td><td class="num">48</td><td class="num">Identical</td></tr>
+          <tr><td>Workday window, first post to last</td><td class="num">7.1 hours</td><td class="num">6.5 hours</td><td class="num">No (p = 0.41)</td></tr>
+          <tr><td>Weekly window, nine full in-office weeks</td><td class="num">35.0 hours</td><td class="num">30.0 hours</td><td class="num">No (p = 0.25)</td></tr>
+          <tr><td>Last post of the day</td><td class="num">4:31 PM</td><td class="num">4:44 PM</td><td class="num">No (p = 0.68)</td></tr>
+          <tr><td>Messages posted</td><td class="num">8.1</td><td class="num">11.7</td><td class="num">Yes, DRI H more (p = 0.009)</td></tr>
+          <tr><td>Clock hours with at least one post</td><td class="num">4.0</td><td class="num">5.0</td><td class="num">Yes, DRI H more (p = 0.013)</td></tr>
+          <tr><td>Hours in active back-and-forth</td><td class="num">1.5</td><td class="num">2.2</td><td class="num">Yes, DRI H more (p = 0.001)</td></tr>
+        </tbody></table></div>
+      <p class="note">Time visible in the 25 reviewed channels, not total hours worked. Calls, documents, email and direct messages are not included.</p>
+    </div>
+    <div class="card">
+      <h3>Tone of the ownership questions and the replies they received</h3>
+      <p class="note" style="margin:0 0 10px">Two methods: a standard sentiment score (VADER, from -1 to +1), and a reading of each message by a separate reviewer who saw the text with names removed and did not know who asked.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th></th><th class="num">DRI A</th><th class="num">DRI H</th><th class="num">Clear difference?</th></tr></thead>
+        <tbody>
+          <tr><td colspan="4"><b>The questions</b></td></tr>
+          <tr><td>Sentiment score, average</td><td class="num">+0.29</td><td class="num">+0.35</td><td class="num">No (p = 0.54)</td></tr>
+          <tr><td>Explicitly courteous</td><td class="num">21% (9 of 43)</td><td class="num">25% (8 of 32)</td><td class="num">No</td></tr>
+          <tr><td>Curt or demanding</td><td class="num">0</td><td class="num">0</td><td class="num">Identical</td></tr>
+          <tr><td>Negative wording (frustration, complaint)</td><td class="num">12% (5)</td><td class="num">3% (1)</td><td class="num">No (p = 0.23)</td></tr>
+          <tr><td>Hedged or tentative</td><td class="num">12% (5)</td><td class="num">56% (18)</td><td class="num">Yes (p &lt; 0.001)</td></tr>
+          <tr><td>Two or more asks in one message</td><td class="num">7% (3)</td><td class="num">25% (8)</td><td class="num">Yes (p = 0.046)</td></tr>
+          <tr><td>Self-deprecating</td><td class="num">0</td><td class="num">3</td><td class="num">No (p = 0.07)</td></tr>
+          <tr><td>Median length</td><td class="num">189 characters</td><td class="num">330 characters</td><td class="num">Yes (p = 0.002)</td></tr>
+          <tr><td colspan="4"><b>The first reply</b></td></tr>
+          <tr><td>No reply at all</td><td class="num">7 of 43</td><td class="num">8 of 32</td><td class="num">No</td></tr>
+          <tr><td>Sentiment score, average</td><td class="num">+0.32</td><td class="num">+0.29</td><td class="num">No (p = 0.95)</td></tr>
+          <tr><td>Warm</td><td class="num">22% (8 of 36)</td><td class="num">21% (5 of 24)</td><td class="num">No</td></tr>
+          <tr><td>Negative</td><td class="num">6% (2)</td><td class="num">17% (4)</td><td class="num">No (p = 0.21)</td></tr>
+          <tr><td>Answered or committed to the ask</td><td class="num">69% (25)</td><td class="num">54% (13)</td><td class="num">No (p = 0.28)</td></tr>
+          <tr><td>Returned the work to the asker</td><td class="num">8% (3)</td><td class="num">21% (5)</td><td class="num">No (p = 0.25)</td></tr>
+        </tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>Does DRI H's question style explain the gap?</h3>
+      <p>DRI H's questions are more often hedged, bundled and long. To check whether that style explains the gap, the comparison was repeated two ways.</p>
+      <ul class="clean">
+        <li><b>Plain questions only</b> (not hedged, not bundled, not self-deprecating): DRI A 86% resolved (31 of 36), DRI H 30% (3 of 10). One-sided p = 0.001.</li>
+        <li><b>Within DRI H's own questions:</b> hedged questions were resolved 33% of the time (6 of 18), unhedged ones 29% (4 of 14).</li>
+      </ul>
+    </div>
+    <div class="concl"><h3>Conclusions</h3><ul>
+      <li>In early-phase states, DRI A's ownership questions were resolved 78% of the time and DRI H's 31%. The difference is very unlikely to be chance (one-sided p = 0.003).</li>
+      <li>DRI H's factual questions, and questions directed to DRI H, were resolved more often than DRI A's, so the gap is specific to ownership questions.</li>
+      <li>The gap appears with every kind of recipient: engineering, the manager and other DRIs.</li>
+      <li>On in-office weekdays, the two DRIs were active on the same number of days, worked windows of similar length and posted their last message at about the same time. DRI H posted more and spent more time in active conversation. Differences in time worked do not explain the gap.</li>
+      <li>The two DRIs asked with the same courtesy and the same overall sentiment, and the replies they received were equally warm. Replies to DRI H were somewhat more often negative or returned the work, but not to a degree that is statistically clear.</li>
+      <li>DRI H's questions were more often hedged, bundled and long. That style does not explain the gap: plain questions from DRI H were resolved 30% of the time against 86% for DRI A, and hedging made no difference within DRI H's own questions. Adjustments 4 and 7 address the style regardless.</li>
+      <li>DRI H addressed more ownership questions to a group instead of a named person (5 against 1). That is a difference in DRI H's own approach, and adjustment 4 addresses it.</li>
+    </ul></div>
   </section>
 
   <section class="panel" id="contrasts" data-title="Same situation, different response">
     <p class="kicker"></p>
     <h2>Same situation, different response</h2>
-    <p class="sub">Seven pairs from the record in which a similar request or action received a different response. Each pair carries a caveat on what differs between the two situations.</p>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">When the situation is similar, is the response similar?</div><div class="lab">Why</div><div class="ww">Rates can hide context. Placing similar situations side by side, each with a caveat on what differs, lets the reader judge each comparison instead of taking a number on trust.</div></div>
+    <p class="sub">Eight pairs from the record in which a similar request or action received a different response. Each pair carries a caveat on what differs between the two situations.</p>
     <div id="pairs"></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>In eight pairs, similar requests or actions received different responses.</li><li>The differences tracked who asked, how the question was framed, and what was being changed. No written rule settled any of them.</li><li>Each pair also has another possible explanation, stated in its caveat.</li></ul></div>
   </section>
 
   <section class="panel" id="bind" data-title="Acting first and asking first">
     <p class="kicker"></p>
     <h2>Acting first and asking first</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">Would a different approach have worked better?</div><div class="lab">Why</div><div class="ww">If one approach reliably worked, the problem would be DRI H's approach. This section tests both.</div></div>
     <p class="sub">Every entry in the record in which DRI H either acted without confirmation or asked before acting, with the response each received.</p>
     <div class="card">
       <div class="bindgrid">
@@ -228,18 +322,22 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
       <li>The stated team norm (Oct 19, to a coordinator) is to obtain approval before acting externally. The Oct 29 action taken without approval was endorsed.</li>
       <li>Asking resolved quickly when it went to one named, available owner with a yes-or-no question. Asking stalled when the question was who the owner was.</li>
     </ol>
+    <div class="concl"><h3>Conclusions</h3><ul><li>Both approaches produced both outcomes.</li><li>Asking worked when it went to one named person as a yes-or-no question, and it stalled when the question was who the owner was.</li><li>Acting first was corrected on an engineering field and endorsed on a portal setting, and no written boundary separates the two.</li></ul></div>
   </section>
 
   <section class="panel" id="case1" data-title="Case 1: production messaging">
     <p class="kicker"></p>
     <h2>Case 1: production messaging in a live state</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">Where was time lost between the client's request and delivery?</div><div class="lab">Why</div><div class="ww">A full timeline shows every step, including DRI H's own, so a reader can see where the delay came from.</div></div>
     <p class="sub">The client's request was fulfilled 29 hours after it was made, by DRI H, under written guidance posted to the DRI group three months earlier that no respondent cited when DRI H asked. Times are Central. Select an entry to read it.</p>
     <div class="card"><ol class="tl" id="tl1"></ol></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>The client's request was fulfilled 29 hours after it was made.</li><li>The authority to fulfill it had been posted 89 days earlier and was not cited when DRI H asked.</li><li>It was restated only after DRI H acted.</li></ul></div>
   </section>
 
   <section class="panel" id="case2" data-title="Case 2: test script authorship">
     <p class="kicker"></p>
     <h2>Case 2: test script authorship in an early-phase state</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">Who was responsible for writing the client's test scripts?</div><div class="lab">Why</div><div class="ww">This case contains the record's closest thing to a controlled comparison: the same question, asked by two different people on the same day.</div></div>
     <p class="sub">The writing of the client's user acceptance test scripts changed hands three times between DRI H and the embedded engineer from Aug 18 to Oct 30. No standing assignment is documented.</p>
     <div class="card">
       <h3>The same question, asked by DRI H and then by the DRI manager</h3>
@@ -250,26 +348,32 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
       <p class="note">The record does not establish why the responses differed. Rank, timing and wording differ between the two asks.</p>
     </div>
     <div class="card"><ol class="tl" id="tl2"></ol></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>Responsibility for writing the scripts changed hands three times between Aug 18 and Oct 30, and no standing assignment is documented.</li><li>The same question was redirected for DRI H and answered within an hour for the manager.</li><li>Delivery was waved off on the night of Oct 29. The client required it on Oct 30, and the engineer delivered the script that night.</li></ul></div>
   </section>
 
   <section class="panel" id="errors" data-title="DRI H's errors">
     <p class="kicker"></p>
     <h2>DRI H's statements later found inaccurate or incomplete</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">Where did DRI H get it wrong?</div><div class="lab">Why</div><div class="ww">A review that leaves out its author's mistakes isn't credible. Each error is listed with what DRI H knew at the time, so a reader can judge whether it was avoidable.</div></div>
     <p class="sub">Three statements and one omission by DRI H were later corrected or remain unconfirmed. In two of the statements, DRI H flagged uncertainty or asked for confirmation at the time. In each case, the correct information was held by others, undocumented, or posted once in a channel outside the engagement.</p>
     <div class="items" id="errs"></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>In this period, DRI H made three statements that were inaccurate or unconfirmed, and one omission.</li><li>In two of the statements, DRI H flagged the uncertainty at the time.</li><li>In all four cases, the correct information was held by others, was undocumented, or had been posted once outside the engagement.</li></ul></div>
   </section>
 
   <section class="panel" id="adjust" data-title="Adjustments adopted">
     <p class="kicker"></p>
     <h2>Adjustments adopted by DRI H</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">What is DRI H changing?</div><div class="lab">Why</div><div class="ww">Findings matter only if they change behavior. Each adjustment is tied to a record entry and has an indicator someone else can check, so progress can be verified rather than claimed.</div></div>
     <p class="sub">Effective November 2, 2026, DRI H adopts nine process adjustments. Each addresses a specific entry in this record and has an indicator that can be checked in Slack, email or Linear.</p>
     <div class="items" id="adj"></div>
     <div class="card" style="margin-top:20px"><h3>How the effect can be measured</h3><p style="margin-bottom:0">By repeating the team comparison for November 2, 2026 to January 31, 2027, with the same roster, channels and definitions, and checking each indicator above.</p></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>DRI H adopted nine adjustments, effective Nov 2.</li><li>Each one can be checked in Slack, email or Linear.</li><li>Rerunning the same comparison for Nov 2 to Jan 31 will show whether they worked.</li></ul></div>
   </section>
 
   <section class="panel" id="limits" data-title="Limits">
     <p class="kicker"></p>
     <h2>Limits of this record</h2>
+    <div class="qbox"><div class="lab">Question</div><div class="qq">What can't this record show?</div><div class="lab">Why</div><div class="ww">Stating the limits up front lets a reader weigh the findings at their actual strength.</div></div>
     <p class="sub">The limits of the team record apply here, plus these.</p>
     <div class="card"><ul class="clean">
       <li><b>Selection.</b> The two cases were selected because DRI H raised them. They show sequence and content, not frequency.</li>
@@ -278,6 +382,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
       <li><b>Speakers.</b> Meeting transcripts do not identify individual speakers on call audio. Spoken statements are attributed to "Ready-side" only.</li>
       <li><b>Authorship.</b> DRI H is the subject of this record and initiated its compilation. Selection of events was made with AI assistance and reviewed by DRI H.</li>
     </ul></div>
+    <div class="concl"><h3>Conclusions</h3><ul><li>The two cases were selected because DRI H raised them, so they show sequence and content, not frequency.</li><li>The same-question comparison is a single instance and shows a difference in outcome, not its cause.</li></ul></div>
   </section>
 </main>
 
@@ -308,7 +413,7 @@ panels.forEach(function(p,i){
   var pg=document.createElement("div");pg.className="pager";
   if(i>0){var pv=document.createElement("button");pv.type="button";pv.className="prev";pv.innerHTML="<small>Previous</small>"+panels[i-1].dataset.title;pv.addEventListener("click",function(){go(i-1,true);});pg.appendChild(pv);}
   if(i<panels.length-1){var nx=document.createElement("button");nx.type="button";nx.className="next";nx.innerHTML="<small>Next</small>"+panels[i+1].dataset.title;nx.addEventListener("click",function(){go(i+1,true);});pg.appendChild(nx);}
-  else{var bk=document.createElement("a");bk.className="btnlink";bk.href="index.html";bk.textContent="Back to the team record";bk.style.marginLeft="auto";pg.appendChild(bk);}
+  else{var bk=document.createElement("a");bk.className="btnlink";bk.href="team.html";bk.textContent="Back to the team record";bk.style.marginLeft="auto";pg.appendChild(bk);}
   p.appendChild(pg);
 });
 function go(i,scroll){
@@ -331,7 +436,9 @@ addEventListener("hashchange",function(){panels.forEach(function(p,i){if(locatio
 var stats=[
   {big:"87%",lbl:"Of questions directed to DRI H were resolved, the highest of the nine DRIs",to:"reciprocity"},
   {big:"31%",lbl:"Of DRI H's own ownership questions were resolved, the lowest of DRIs with five or more",to:"reciprocity"},
-  {big:"7",lbl:"Pairs in which a similar request or action received a different response",to:"contrasts"},
+  {big:"8",lbl:"Pairs in which a similar request or action received a different response",to:"contrasts"},
+  {big:"78% vs 31%",lbl:"Ownership questions resolved in early-phase states, DRI A against DRI H",to:"peer"},
+  {big:"48 of 50",lbl:"In-office weekdays active, for both DRI A and DRI H, with similar workday windows",to:"peer"},
   {big:"2 of 2",lbl:"Ways of working (acting first, asking first) that met both outcomes",to:"bind"},
   {big:"29 hours",lbl:"From a client request to its fulfillment, under guidance posted 89 days earlier",to:"case1"},
   {big:"3",lbl:"Times the writing of one deliverable changed hands between DRI H and an engineer, Aug 18 to Oct 30",to:"case2"},
@@ -374,7 +481,8 @@ var pairs=[
   {t:"Approval before external action",a:{h:"Oct 19: norm stated",x:"To a coordinator: please do not propose new meetings externally \"without getting approval from [DRI H] and me first.\""},b:{h:"Oct 29: action without approval endorsed",x:"DRI H acted on a client request without approval. The same evening, on a related form, the implementation lead: \"Ideally we would like to avoid having this blocked by Eng team.\" The next day, DRI H was asked to lead the client demo."},n:"The norm was stated for meetings; the endorsement concerned a portal setting."},
   {t:"Work returned to the asker",a:{h:"Another DRI, Oct 28",x:"Told a task was \"entirely DIY-able,\" with a five-step written guide and an offer to walk through it."},b:{h:"DRI H, Oct 29",x:"Told \"you'd need to do the writing as you test,\" with the module configuration and no instructions."},n:"The tasks differ: one was a configuration task, the other a written deliverable."},
   {t:"A rule stated, then needed",a:{h:"Jul 31: stated",x:"Posted once to the DRI group: DRIs can enable messaging in node settings, \"no ticket needed.\" No replies."},b:{h:"Oct 28: not cited",x:"When DRI H asked who could enable it, none of the respondents referred to the post. It was restated on Oct 29, after DRI H acted."},n:"DRI H was out of office for the two weeks after the post and did not locate it either (see DRI H's errors)."},
-  {t:"Who writes the test scripts",a:{h:"Aug 18 and Oct 29: DRI H",x:"Aug 18 task list: DRI H \"will take this on - reassign and manage delivery expectations.\" Oct 29: the writing is redirected to DRI H."},b:{h:"Oct 16 and Oct 30: the embedded engineer",x:"The engineer wrote the prior script by hand. Oct 30: the manager's recovery plan lists the script as \"generated by\" the engineer, who sends it that night."},n:"No written definition separates managing script delivery from writing scripts. No standing assignment is documented."}
+  {t:"Who writes the test scripts",a:{h:"Aug 18 and Oct 29: DRI H",x:"Aug 18 task list: DRI H \"will take this on - reassign and manage delivery expectations.\" Oct 29: the writing is redirected to DRI H."},b:{h:"Oct 16 and Oct 30: the embedded engineer",x:"The engineer wrote the prior script by hand. Oct 30: the manager's recovery plan lists the script as \"generated by\" the engineer, who sends it that night."},n:"No written definition separates managing script delivery from writing scripts. No standing assignment is documented."},
+  {t:"Enabling a node in staging",a:{h:"DRI A, Sep 22",x:"\"I just enabled the Activity Node (Named 'Messaging' internally) in Stage.\" No permission request; no objection in the thread."},b:{h:"DRI H, Oct 16",x:"\"You cool with me flipping it on?\" Permission requested from the engineer and given in under one minute."},n:"Different states and engineers, and both actions were accepted. The difference is in what each DRI felt it needed to ask, with no written rule to say which was expected."}
 ];
 (function(){
   var box=document.getElementById("pairs");
