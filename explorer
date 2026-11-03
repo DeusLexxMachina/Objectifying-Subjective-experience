@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ownership Questions: Record Review</title>
+<meta name="description" content="A 90-day review of how ownership and authority questions from the DRI team were answered in the written record.">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#1d1c1a; --ink2:#55534e; --ink3:#86837b;
+  --rule:#e4e1d9; --muted:#bdb9af; --muted2:#d6d3ca; --muted3:#e9e6df;
+  --accent:#2f6bd0; --accent-soft:rgba(47,107,208,.12); --accent-ink:#1f56b3;
+  --ref:#8a877f; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.05);
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141413; --surface:#1d1d1b; --ink:#ecebe5; --ink2:#b4b1a8; --ink3:#86837b;
+    --rule:#33322e; --muted:#6b6962; --muted2:#4a4944; --muted3:#2b2a27;
+    --accent:#6fa3f2; --accent-soft:rgba(111,163,242,.16); --accent-ink:#9bc0f7;
+    --ref:#8f8c84; --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141413; --surface:#1d1d1b; --ink:#ecebe5; --ink2:#b4b1a8; --ink3:#86837b;
+  --rule:#33322e; --muted:#6b6962; --muted2:#4a4944; --muted3:#2b2a27;
+  --accent:#6fa3f2; --accent-soft:rgba(111,163,242,.16); --accent-ink:#9bc0f7;
+  --ref:#8f8c84; --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+a{color:var(--accent-ink)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 0 20px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:0 0 10px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 12px;font-weight:650;letter-spacing:-.01em}
+.lede{color:var(--ink2);max-width:720px;margin:0}
+nav.steps{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.steps-inner{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:thin}
+.step{flex:0 0 auto;border:1px solid var(--rule);background:var(--surface);color:var(--ink2);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.step:hover{border-color:var(--muted)}
+.step[aria-current="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.step .n{opacity:.6;margin-right:6px;font-variant-numeric:tabular-nums}
+.progress{height:2px;background:var(--rule)}
+.progress span{display:block;height:100%;background:var(--accent);width:0;transition:width .3s ease}
+.toolbar{display:flex;justify-content:flex-end;gap:8px;padding:8px 0 0}
+.linkbtn{background:none;border:0;color:var(--ink3);font:inherit;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
+main{padding:24px 0 64px}
+section.panel{display:none;animation:fade .25s ease}
+section.panel.active{display:block}
+body.all section.panel{display:block;margin-bottom:56px}
+body.all .pager{display:none}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-size:clamp(22px,3vw,28px);line-height:1.2;margin:0 0 8px;font-weight:650;letter-spacing:-.005em}
+.kicker{font-size:13px;color:var(--ink3);margin:0 0 6px;font-variant-numeric:tabular-nums}
+.sub{color:var(--ink2);margin:0 0 24px;max-width:760px}
+p{max-width:760px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin:0 0 20px}
+.card h3{font-size:16px;margin:0 0 4px;font-weight:620}
+.card .note{font-size:13px;color:var(--ink3);margin:6px 0 0}
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:820px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2{grid-template-columns:1fr}}
+@media (max-width:420px){.g4{grid-template-columns:1fr}}
+.stat{text-align:left;cursor:pointer;border:1px solid var(--rule);background:var(--surface);border-radius:var(--radius);padding:18px;font:inherit;color:inherit;box-shadow:var(--shadow);transition:border-color .15s, transform .15s}
+.stat:hover{border-color:var(--accent);transform:translateY(-1px)}
+.stat .big{font-size:30px;white-space:nowrap;font-weight:650;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .lbl{font-size:14px;color:var(--ink2);margin-top:6px}
+.stat .go{font-size:12px;color:var(--accent-ink);margin-top:10px}
+ul.clean{padding-left:18px;margin:0}
+ul.clean li{margin:0 0 8px;max-width:760px}
+ol.obs{padding-left:22px;margin:0}
+ol.obs li{margin:0 0 10px;max-width:760px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink2);font-size:13px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tablewrap{overflow-x:auto}
+details.data{margin-top:12px}
+details.data summary{cursor:pointer;color:var(--ink3);font-size:13px}
+details.data[open] summary{margin-bottom:8px}
+svg text{font-family:inherit}
+.chart{width:100%;height:auto;display:block}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--surface);margin:0 0 14px}
+.seg button{border:0;background:none;font:inherit;font-size:13px;color:var(--ink2);padding:5px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--ink2);margin:10px 0 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.detail{border-left:3px solid var(--accent);padding:10px 14px;background:var(--accent-soft);border-radius:0 8px 8px 0;margin-top:14px;font-size:14px;min-height:48px}
+.detail b{font-weight:620}
+.tl{list-style:none;padding:0;margin:0;position:relative}
+.tl:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.tl li{position:relative;padding:0 0 4px 36px}
+.tl .dot{position:absolute;left:4px;top:16px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:2px solid var(--muted)}
+.tl li.key .dot{border-color:var(--accent);background:var(--accent)}
+.tl button.item{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;cursor:pointer}
+.tl button.item:hover{border-color:var(--muted)}
+.tl .date{font-size:13px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.tl .head{font-weight:560}
+.tl .more{display:none;color:var(--ink2);font-size:14px;margin-top:6px}
+.tl button[aria-expanded="true"] .more{display:block}
+.tl .gap{font-size:12px;color:var(--ink3);padding:6px 0 10px 36px;position:relative}
+.tl .gap.long{color:var(--accent-ink);font-weight:600}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:620px){.pair{grid-template-columns:1fr}}
+.pair .side{border:1px solid var(--rule);border-radius:10px;padding:14px;background:var(--bg)}
+.pair .who{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.pair .t{font-size:22px;font-weight:650;font-variant-numeric:tabular-nums;margin:4px 0}
+.pair .res{font-size:14px;color:var(--ink2)}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--ink2);background:var(--surface)}
+.pill.none{border-color:var(--accent);color:var(--accent-ink)}
+.items{display:grid;gap:12px}
+.items details{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:0}
+.items summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.items summary::-webkit-details-marker{display:none}
+.items summary .q{font-weight:560}
+.items summary .meta{font-size:13px;color:var(--ink3);margin-top:2px}
+.items .body{padding:0 16px 14px;color:var(--ink2);font-size:14px}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:36px;padding-top:20px;border-top:1px solid var(--rule)}
+.pager button{font:inherit;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:10px;cursor:pointer;max-width:48%;text-align:left}
+.pager button:hover{border-color:var(--accent)}
+.pager button small{display:block;color:var(--ink3);font-size:12px}
+.pager .next{margin-left:auto;text-align:right}
+.tip{position:fixed;pointer-events:none;z-index:20;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.4;padding:8px 10px;border-radius:8px;max-width:260px;opacity:0;transition:opacity .1s}
+.tip.on{opacity:1}
+footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding:20px 0 40px}
+@media (max-width:520px){.seg{display:flex;flex-wrap:wrap;border-radius:14px}.seg button{padding:5px 10px}}
+.hint{font-size:13px;color:var(--ink3);margin:-14px 0 16px}
+@media print{nav.steps,.toolbar,.pager,.tip{display:none!important}section.panel{display:block!important;break-inside:avoid-page;margin-bottom:32px}}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="eyebrow">Record review · July 31 to October 29, 2026 · Prepared November 2, 2026</p>
+  <h1>Ownership Questions Across the DRI Team</h1>
+  <p class="lede">How written questions about ownership, authority and sign-off from the nine DRIs were answered over 90 days, measured against factual questions and against other participants.</p>
+</header>
+
+<nav class="steps" aria-label="Sections">
+  <div class="wrap">
+    <div class="steps-inner" id="steps"></div>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</nav>
+
+<main class="wrap">
+  <div class="toolbar"><button class="linkbtn" id="toggleAll" type="button">Show all sections on one page</button></div>
+
+  <!-- 0 -->
+  <section class="panel" id="overview" data-title="At a glance">
+    <p class="kicker">Overview</p>
+    <h2>At a glance</h2>
+    <p class="sub">Select a figure to open the section it comes from. Use the arrow keys or the buttons at the bottom of each section to move through the review.</p>
+    <div class="grid g4" id="stats"></div>
+  </section>
+
+  <!-- 1 -->
+  <section class="panel" id="scope" data-title="Scope and method">
+    <p class="kicker">Section 1</p>
+    <h2>Scope and method</h2>
+    <p class="sub">What was reviewed, and how each question was coded.</p>
+    <div class="card">
+      <ul class="clean">
+        <li><b>Period.</b> July 31 to October 29, 2026 (90 days).</li>
+        <li><b>Sources.</b> 25 Slack channels (19 state-client, 6 cross-team), with asks found in 24. In the cross-team channels, only asks made by or to DRIs were coded. Linear issues, email and meeting notes were consulted for individual threads. Direct messages and huddles were not reviewed.</li>
+        <li><b>Population.</b> The nine DRIs on the DRI team roster, labeled DRI A to DRI I. The DRI manager is not in the population.</li>
+        <li><b>Unit.</b> An ask is a written request for an answer or an action. Each ask was classed as <i>ownership</i> (who decides, who owns, sign-off, permission, commitment, assignment) or <i>factual</i> (information, logistics).</li>
+        <li><b>Outcome.</b> Each ask was coded resolved, partial, redirected, acknowledged only, or no visible response. Resolved means the record shows the answer or action requested.</li>
+        <li><b>Totals.</b> 318 asks by DRIs (187 ownership, 131 factual). 263 asks by other participants (126 ownership, 137 factual) serve as a reference group.</li>
+        <li><b>Statistics.</b> Wilson 95% intervals; one-sided Fisher exact tests; permutation tests stratified by channel or by phase, 20,000 draws each.</li>
+        <li><b>Review.</b> 91 threads addressed to engineering were re-read in a second pass, which changed six outcome codes. Figures use the corrected codes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="panel" id="resolution" data-title="Ownership vs factual">
+    <p class="kicker">Section 2</p>
+    <h2>Ownership questions resolve less often than factual questions</h2>
+    <p class="sub">Across the nine DRIs, 58% of ownership questions were resolved (109 of 187), against 76% of factual questions (100 of 131). Ownership questions from other participants were resolved 73% of the time (92 of 126). The median first reply came after 0.83 hours for ownership questions and 0.2 hours for factual ones.</p>
+    <div class="card">
+      <h3>What happened to each question</h3>
+      <p class="note" style="margin:0 0 12px">Hover or tap a segment for counts.</p>
+      <svg class="chart" id="mix" viewBox="0 0 760 150" role="img" aria-label="Outcome of DRI ownership and factual questions"></svg>
+      <div class="legend" id="mixLegend"></div>
+      <p class="note">Of the 78 unresolved ownership questions, 32 received no visible response, 23 were acknowledged only, 18 received a partial answer and 5 were redirected.</p>
+    </div>
+    <div class="card">
+      <h3>Ownership-question resolution varied widely across the nine DRIs</h3>
+      <p class="note" style="margin:0 0 8px">Dots: share resolved. Bars: 95% Wilson interval. Dashed line: all nine DRIs. Dotted line: other participants.</p>
+      <svg class="chart" id="forest" role="img" aria-label="Ownership questions resolved, by DRI"></svg>
+      <details class="data"><summary>View as a table</summary><div class="tablewrap"><table id="forestTable"></table></div></details>
+    </div>
+    <p>The spread for factual questions was narrower: 67% to 89% among DRIs with at least five factual asks. DRI I's ownership rate rests on four asks. DRI H's interval does not overlap DRI A's; the intervals of DRIs B to G overlap one another.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="panel" id="addressees" data-title="Where questions go">
+    <p class="kicker">Section 3</p>
+    <h2>Where ownership questions go</h2>
+    <p class="sub">Half of DRI ownership questions (91 of 187) named an engineer as the first recipient.</p>
+    <div class="card">
+      <h3>Ownership questions by first-named recipient</h3>
+      <p class="note" style="margin:0 0 8px">Band width is the number of questions. Select a recipient to see its outcomes.</p>
+      <svg class="chart" id="flow" role="img" aria-label="DRI ownership questions by addressee role"></svg>
+      <div class="detail" id="flowDetail" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <h3>Engineering-addressed questions, re-read in full (n=91)</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Measure</th><th class="num">Share</th></tr></thead>
+        <tbody>
+          <tr><td>Named engineer responded</td><td class="num">67%</td></tr>
+          <tr><td>Response named an owner or a commitment</td><td class="num">62%</td></tr>
+          <tr><td>Resolved</td><td class="num">59%</td></tr>
+          <tr><td>No visible response</td><td class="num">20%</td></tr>
+          <tr><td>Redirected, or work returned to the asker</td><td class="num">10%</td></tr>
+          <tr><td>Re-raised to the DRI manager or leadership within seven days</td><td class="num">7%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">The median first substantive response came after 0.6 hours.</p>
+    </div>
+    <div class="card">
+      <h3>What was being asked of engineering</h3>
+      <p class="note" style="margin:0 0 12px">41 of the 91 (45%) asked an engineer for a decision, a permission, or a review of non-code work (dates, documents, scope, whether an action was allowed), not for engineering work.</p>
+      <svg class="chart" id="kind" viewBox="0 0 760 130" role="img" aria-label="Resolution of engineering-addressed questions by kind of request"></svg>
+    </div>
+    <p>Questions addressed to a group or a channel, with no named recipient, had the lowest resolution of any addressee type.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="panel" id="phase" data-title="Project phase">
+    <p class="kicker">Section 4</p>
+    <h2>Project phase</h2>
+    <p class="sub">States were classed by phase during the period. Two states that started in or near July, and one state in the month before its September launch, are early. All other active states are live. One dormant state and the six cross-team channels are excluded.</p>
+    <div class="card">
+      <div class="seg" role="group" aria-label="Population">
+        <button type="button" data-ph="all" aria-pressed="true">All DRIs</button>
+        <button type="button" data-ph="exH" aria-pressed="false">Excluding DRI H</button>
+        <button type="button" data-ph="H" aria-pressed="false">DRI H against the rest</button>
+      </div>
+      <svg class="chart" id="phaseChart" viewBox="0 0 760 220" role="img" aria-label="Ownership questions resolved by project phase"></svg>
+      <div class="detail" id="phaseDetail" aria-live="polite"></div>
+    </div>
+    <ul class="clean">
+      <li>16 of the 25 early-phase questions came from one DRI (DRI H).</li>
+      <li>The only DRI assigned to a newly started state with no prior engagement (DRI I) resolved 1 of 4.</li>
+      <li>With askers shuffled within each phase, DRI H's difference from the other DRIs holds (one-sided p = 0.007, 20,000 draws).</li>
+      <li>Because one DRI holds most early-phase questions, phase and individual cannot be fully separated in this sample.</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section class="panel" id="rights" data-title="Decision rights">
+    <p class="kicker">Section 5</p>
+    <h2>Decision rights in the written record</h2>
+    <p class="sub">No single written list of the portal settings a DRI may change in production, with or without approval, was found in the reviewed sources. Statements of DRI authority appear as individual channel posts. Select an entry to read the record.</p>
+    <div class="card"><ol class="tl" id="timeline"></ol></div>
+    <ol class="obs">
+      <li>The authority statement that applied on Oct 28 had been posted 89 days earlier. None of the Oct 28 responses referred to it.</li>
+      <li>The same DRI acted without prior confirmation twice. The action on an engineering-owned field (issue status) was corrected. The action on a portal node setting was endorsed.</li>
+      <li>When a named engineer was asked directly for a specific permission, the answer came within one minute. When the question was who holds a permission, no owner was named.</li>
+    </ol>
+  </section>
+
+  <!-- 6 -->
+  <section class="panel" id="depended" data-title="What resolution depended on">
+    <p class="kicker">Section 6</p>
+    <h2>What resolution depended on</h2>
+    <p class="sub">Five conditions in the record that went with a question being resolved or not.</p>
+    <div class="grid g2">
+      <div class="card"><h3>A response is not a resolution</h3>
+        <p>Of the 78 unresolved DRI ownership questions, 46 (59%) received some reply: an acknowledgment, a partial answer, or a redirect.</p>
+        <p style="margin-bottom:0">In engineering-addressed threads, the named engineer replied to DRI H at the same rate as to the other DRIs (67% each) and sooner (median 0.37 hours against 0.69). The replies to DRI H ended in a resolution less often: 33% against 64%.</p></div>
+      <div class="card"><h3>A named recipient</h3>
+        <svg class="chart" id="named" viewBox="0 0 360 130" role="img" aria-label="Resolution by named recipient versus group or channel"></svg>
+        <p class="note">Named person: 104 of 174. Group or channel: 5 of 13.</p></div>
+    </div>
+    <div class="card"><h3>Who asked</h3>
+      <p class="note" style="margin:0 0 12px">The same question, in one state, on Oct 29.</p>
+      <div class="pair">
+        <div class="side"><div class="who">A DRI asks the embedded engineer</div><div class="t">4:06 PM</div><div class="res">How was a prior deliverable produced? <br><b>Redirected.</b></div></div>
+        <div class="side"><div class="who">The DRI manager asks, after the DRI raised it in a live discussion</div><div class="t">6:44 PM</div><div class="res">Same question, in writing. <br><b>Direct answer in 55 minutes.</b></div></div>
+      </div>
+      <p class="note">A single matched pair: the asker's rank, the timing and the wording all differ.</p></div>
+    <div class="grid g2">
+      <div class="card"><h3>How work was returned</h3>
+        <p style="margin-bottom:0">In 9 of the 91 engineering-addressed threads, the work was redirected or returned to the asker. In one case, the return came with a five-step written guide and an offer to walk through it. In another, on Oct 29, the return ("you'd need to do the writing") came with no instructions.</p></div>
+      <div class="card"><h3>Escalation</h3>
+        <p style="margin-bottom:0">6 of the 91 engineering-addressed questions (7%) were re-raised to the DRI manager or leadership within seven days. Ownership questions addressed to the DRI manager directly were resolved 52% of the time (11 of 21).</p></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="panel" id="unowned" data-title="No owner of record">
+    <p class="kicker">Section 7</p>
+    <h2>Items with no owner of record, as of November 1</h2>
+    <p class="sub">Five ownership questions raised in writing on Oct 28 and Oct 29 have no named owner or recorded decision in Slack, email, Linear or meeting notes. Select an item for the record.</p>
+    <div class="items" id="items"></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="panel" id="limits" data-title="Limits">
+    <p class="kicker">Section 8</p>
+    <h2>Limits of the evidence</h2>
+    <p class="sub">What this review can and cannot show.</p>
+    <div class="card"><ul class="clean">
+      <li><b>Written record only.</b> Direct messages, huddles and calls were not reviewed. A question resolved in those places appears here as unresolved.</li>
+      <li><b>Coding.</b> Asks were coded by one reviewer with AI assistance. No second independent coder was used, and agreement between coders was not measured. The ownership and factual classes, and the split between decision requests and engineering work, involve judgment.</li>
+      <li><b>Sample size.</b> Several DRIs have fewer than 15 ownership questions, and one has 4. Individual intervals are wide.</li>
+      <li><b>Phase.</b> Most early-phase questions come from one DRI, so the effect of phase cannot be separated from the effect of the individual.</li>
+      <li><b>Addressee.</b> Each question is assigned to its first-named recipient. Questions with several recipients are counted once.</li>
+      <li><b>Cause.</b> The record shows sequence and content. It does not show intent or cause.</li>
+      <li><b>Attributes.</b> No personal attributes of the DRIs were recorded or analyzed.</li>
+      <li><b>Origin.</b> This review was initiated by one of the nine DRIs in the population.</li>
+    </ul></div>
+  </section>
+</main>
+
+<footer><div class="wrap">Source: coded Slack asks, July 31 to October 29, 2026, with Linear, email and meeting notes for individual threads. DRIs are labeled A to I in order of ownership-question resolution.</div></footer>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs){e.setAttribute(k,attrs[k]);}if(parent)parent.appendChild(e);return e;}
+function txt(parent,x,y,s,attrs){var a=attrs||{};a.x=x;a.y=y;var t=el("text",a,parent);t.textContent=s;return t;}
+function pct(k,n){return Math.round(k/n*100)+"%";}
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
+var tip=document.getElementById("tip");
+function bindTip(node,html){
+  node.addEventListener("mousemove",function(e){tip.innerHTML=html;tip.classList.add("on");var x=e.clientX+14,y=e.clientY+14;var w=tip.offsetWidth,h=tip.offsetHeight;if(x+w>innerWidth-8)x=e.clientX-w-14;if(y+h>innerHeight-8)y=e.clientY-h-14;tip.style.left=x+"px";tip.style.top=y+"px";});
+  node.addEventListener("mouseleave",function(){tip.classList.remove("on");});
+}
+function wilson(k,n){var z=1.96,p=k/n,d=1+z*z/n,c=(p+z*z/(2*n))/d,w=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n))/d;return{lo:c-w,hi:c+w};}
+
+/* ---------- navigation ---------- */
+var panels=[].slice.call(document.querySelectorAll("section.panel"));
+var stepsEl=document.getElementById("steps"),bar=document.getElementById("bar");
+var cur=0;
+panels.forEach(function(p,i){
+  var b=document.createElement("button");b.className="step";b.type="button";
+  b.innerHTML=(i?'<span class="n">'+i+'</span>':'')+p.dataset.title;
+  b.addEventListener("click",function(){go(i,true);});
+  stepsEl.appendChild(b);
+  var pg=document.createElement("div");pg.className="pager";
+  if(i>0){var pv=document.createElement("button");pv.type="button";pv.className="prev";pv.innerHTML="<small>Previous</small>"+panels[i-1].dataset.title;pv.addEventListener("click",function(){go(i-1,true);});pg.appendChild(pv);}
+  if(i<panels.length-1){var nx=document.createElement("button");nx.type="button";nx.className="next";nx.innerHTML="<small>Next</small>"+panels[i+1].dataset.title;nx.addEventListener("click",function(){go(i+1,true);});pg.appendChild(nx);}
+  p.appendChild(pg);
+});
+function go(i,scroll){
+  cur=Math.max(0,Math.min(panels.length-1,i));
+  panels.forEach(function(p,j){p.classList.toggle("active",j===cur);});
+  [].forEach.call(stepsEl.children,function(b,j){b.setAttribute("aria-current",j===cur?"true":"false");});
+  stepsEl.children[cur].scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});
+  bar.style.width=(cur/(panels.length-1)*100)+"%";
+  if(history.replaceState)history.replaceState(null,"","#"+panels[cur].id);
+  if(document.body.classList.contains("all")){panels[cur].scrollIntoView({behavior:"smooth"});}
+  else if(scroll){window.scrollTo({top:document.querySelector("header.top").offsetHeight,behavior:"smooth"});}
+}
+document.addEventListener("keydown",function(e){
+  if(e.target.closest&&e.target.closest("input,textarea"))return;
+  if(e.key==="ArrowRight")go(cur+1,true);
+  if(e.key==="ArrowLeft")go(cur-1,true);
+});
+var tAll=document.getElementById("toggleAll");
+tAll.addEventListener("click",function(){
+  var on=document.body.classList.toggle("all");
+  tAll.textContent=on?"Show one section at a time":"Show all sections on one page";
+});
+var start=0;panels.forEach(function(p,i){if(location.hash==="#"+p.id)start=i;});
+go(start,false);
+addEventListener("hashchange",function(){panels.forEach(function(p,i){if(location.hash==="#"+p.id&&i!==cur)go(i,true);});});
+
+/* ---------- overview stats ---------- */
+var stats=[
+  {big:"58% vs 76%",lbl:"Ownership questions resolved, against factual questions, across nine DRIs",to:"resolution"},
+  {big:"49%",lbl:"Of DRI ownership questions named an engineer as the first recipient",to:"addressees"},
+  {big:"59%",lbl:"Of unresolved ownership questions received a reply that did not resolve them",to:"depended"},
+  {big:"89 days",lbl:"Between a written statement of DRI authority and the question it would have answered",to:"rights"},
+  {big:"25% to 81%",lbl:"Range of ownership-question resolution across individual DRIs",to:"resolution"},
+  {big:"44% vs 62%",lbl:"Resolution in early-phase states against live states",to:"phase"},
+  {big:"38%",lbl:"Resolution when a question was addressed to a group or channel, not a person",to:"depended"},
+  {big:"5",lbl:"Ownership questions with no owner of record as of November 1",to:"unowned"}
+];
+var sg=document.getElementById("stats");
+stats.forEach(function(s){
+  var b=document.createElement("button");b.type="button";b.className="stat";
+  b.innerHTML='<div class="big">'+s.big+'</div><div class="lbl">'+s.lbl+'</div><div class="go">Open section</div>';
+  b.addEventListener("click",function(){panels.forEach(function(p,i){if(p.id===s.to)go(i,true);});});
+  sg.appendChild(b);
+});
+
+/* ---------- sizing ---------- */
+function clear(svg){while(svg.firstChild)svg.removeChild(svg.firstChild);}
+function availW(id){
+  var mn=document.querySelector("main"),cs=getComputedStyle(mn),m=mn.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),w=m-42,svg=document.getElementById(id);
+  if(svg.closest(".g2")&&innerWidth>820)w=(m-16)/2-42;
+  return Math.max(290,Math.min(760,Math.round(w)));
+}
+
+/* ---------- outcome mix ---------- */
+var mixRows=[
+  {name:"Ownership questions",n:187,parts:[["Resolved",109],["Partial answer",18],["Redirected",5],["Acknowledged only",23],["No visible response",32]]},
+  {name:"Factual questions",n:131,parts:[["Resolved",100],["Partial answer",8],["Redirected",2],["Acknowledged only",2],["No visible response",19]]}
+];
+var mixCol={"Resolved":"var(--accent)","Partial answer":"var(--muted)","Redirected":"var(--muted)","Acknowledged only":"var(--muted2)","No visible response":"var(--muted3)"};
+var mixOp={"Resolved":1,"Partial answer":1,"Redirected":.7,"Acknowledged only":1,"No visible response":1};
+function drawMix(){
+  var svg=document.getElementById("mix");clear(svg);
+  var W=availW("mix"),narrow=W<560,x0=narrow?0:170,BW=W-x0,rh=34,step=narrow?76:60;
+  svg.setAttribute("viewBox","0 0 "+W+" "+(mixRows.length*step+4));
+  mixRows.forEach(function(r,i){
+    var y=(narrow?22:8)+i*step,x=x0;
+    if(narrow)txt(svg,0,y-8,r.name,{fill:"var(--ink)","font-size":"14"});
+    else txt(svg,0,y+rh/2+5,r.name,{fill:"var(--ink)","font-size":"14"});
+    r.parts.forEach(function(p){
+      var w=p[1]/r.n*BW;if(w<=0)return;
+      var rc=el("rect",{x:x,y:y,width:Math.max(w-2,1),height:rh,rx:3,fill:mixCol[p[0]],"fill-opacity":mixOp[p[0]]},svg);
+      bindTip(rc,"<b>"+r.name+"</b><br>"+p[0]+": "+p[1]+" of "+r.n+" ("+pct(p[1],r.n)+")");
+      if(p[0]==="Resolved")txt(svg,x+10,y+rh/2+5,pct(p[1],r.n)+" resolved",{fill:"var(--surface)","font-size":"13","font-weight":"600"});
+      x+=w;
+    });
+  });
+}
+(function(){
+  var lg=document.getElementById("mixLegend");
+  ["Resolved","Partial answer","Redirected","Acknowledged only","No visible response"].forEach(function(k){
+    var s=document.createElement("span");s.innerHTML='<i style="background:'+mixCol[k]+';opacity:'+mixOp[k]+'"></i>'+k;lg.appendChild(s);
+  });
+})();
+
+/* ---------- forest ---------- */
+var dris=[{d:"DRI A",n:43,k:35},{d:"DRI B",n:14,k:10},{d:"DRI C",n:20,k:12},{d:"DRI D",n:24,k:14},{d:"DRI E",n:14,k:8},{d:"DRI F",n:13,k:7},{d:"DRI G",n:23,k:12},{d:"DRI H",n:32,k:10},{d:"DRI I",n:4,k:1}];
+var refOther={n:126,k:92};
+function drawForest(){
+  var svg=document.getElementById("forest");clear(svg);
+  var W=availW("forest"),narrow=W<560,x0=narrow?62:130,xw=W-x0-(narrow?46:90),sx=function(v){return x0+v*xw;},y0=44,rh=narrow?38:34;
+  var yEnd=y0+(dris.length-1)*rh+20;svg.setAttribute("viewBox","0 0 "+W+" "+(yEnd+36));
+  var team=dris.reduce(function(a,r){return a+r.k;},0)/dris.reduce(function(a,r){return a+r.n;},0);
+  var other=refOther.k/refOther.n;
+  [0,.25,.5,.75,1].forEach(function(t){el("line",{x1:sx(t),x2:sx(t),y1:y0-16,y2:yEnd,stroke:"var(--rule)"},svg);txt(svg,sx(t),yEnd+20,Math.round(t*100)+"%",{"text-anchor":"middle",fill:"var(--ink3)","font-size":"12"});});
+  el("line",{x1:sx(team),x2:sx(team),y1:y0-22,y2:yEnd,stroke:"var(--ref)","stroke-dasharray":"4 3"},svg);
+  txt(svg,sx(team)-6,y0-26,(narrow?"":"All nine DRIs: ")+Math.round(team*100)+"%",{"text-anchor":"end",fill:"var(--ink2)","font-size":"12"});
+  el("line",{x1:sx(other),x2:sx(other),y1:y0-22,y2:yEnd,stroke:"var(--ref)","stroke-dasharray":"1 3"},svg);
+  txt(svg,sx(other)+6,y0-26,(narrow?"":"Other participants: ")+Math.round(other*100)+"%",{fill:"var(--ink2)","font-size":"12"});
+  dris.forEach(function(r,i){
+    var y=y0+i*rh,ci=wilson(r.k,r.n),v=r.k/r.n;
+    var g=el("g",{},svg);
+    var hit=el("rect",{x:0,y:y-rh/2,width:W,height:rh,fill:"transparent"},g);
+    if(narrow){txt(g,0,y,r.d,{fill:"var(--ink)","font-size":"13"});txt(g,0,y+14,"n="+r.n,{fill:"var(--ink3)","font-size":"11"});}
+    else txt(g,0,y+4,r.d+"  (n="+r.n+")",{fill:"var(--ink)","font-size":"13"});
+    el("line",{x1:sx(ci.lo),x2:sx(ci.hi),y1:y,y2:y,stroke:"var(--muted)","stroke-width":"3","stroke-linecap":"round"},g);
+    el("circle",{cx:sx(v),cy:y,r:narrow?6:7,fill:"var(--accent)",stroke:"var(--surface)","stroke-width":"2"},g);
+    txt(g,W-2,y+4,Math.round(v*100)+"%",{"text-anchor":"end",fill:"var(--ink2)","font-size":"13"});
+    bindTip(hit,"<b>"+r.d+"</b><br>"+r.k+" of "+r.n+" ownership questions resolved ("+pct(r.k,r.n)+")<br>95% interval "+Math.round(ci.lo*100)+"% to "+Math.round(ci.hi*100)+"%");
+    g.addEventListener("mouseenter",function(){hit.setAttribute("fill","var(--accent-soft)");});
+    g.addEventListener("mouseleave",function(){hit.setAttribute("fill","transparent");});
+  });
+}
+(function(){
+  var tb=document.getElementById("forestTable");tb.innerHTML="<thead><tr><th>DRI</th><th class='num'>Resolved</th><th class='num'>Asked</th><th class='num'>Rate</th><th class='num'>95% interval</th></tr></thead>";
+  var tbody=document.createElement("tbody");tb.appendChild(tbody);
+  dris.forEach(function(r){var ci=wilson(r.k,r.n);var tr=document.createElement("tr");tr.innerHTML="<td>"+r.d+"</td><td class='num'>"+r.k+"</td><td class='num'>"+r.n+"</td><td class='num'>"+pct(r.k,r.n)+"</td><td class='num'>"+Math.round(ci.lo*100)+"% to "+Math.round(ci.hi*100)+"%</td>";tbody.appendChild(tr);});
+})();
+
+/* ---------- flow ---------- */
+var dests=[
+  {d:"Engineering",n:91,k:54,note:"Includes requests for engineering work and requests for decisions, permissions or reviews. See the table and chart below."},
+  {d:"Product, design and data",n:33,k:19,note:""},
+  {d:"Another DRI",n:25,k:17,note:"The highest resolution among recipient types with more than ten questions."},
+  {d:"DRI manager",n:21,k:11,note:""},
+  {d:"Group or channel",n:13,k:5,note:"No named recipient. The lowest resolution of any recipient type."},
+  {d:"Leadership and other teams",n:3,k:2,note:""},
+  {d:"Coordinators",n:1,k:1,note:""}
+];
+var flowSel=0;
+function drawFlow(){
+  var svg=document.getElementById("flow");clear(svg);
+  var W=availW("flow"),narrow=W<560,s=narrow?1.5:1.75,xL=narrow?0:150,nw=10,xR=narrow?70:380,y0=narrow?36:20,minSlot=38,gap=10,fs=narrow?12:14;
+  var N=dests.reduce(function(a,r){return a+r.n;},0),K=dests.reduce(function(a,r){return a+r.k;},0);
+  var y=y0,off=0;
+  dests.forEach(function(r){r.h=r.n*s;r.y=y;r.slot=Math.max(r.h,minSlot)+gap;y+=r.slot;r.sy=y0+off;off+=r.h;});
+  var H=Math.max(y,y0+N*s)+10;svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  var mx=(xL+nw+xR)/2,paths=[],detail=document.getElementById("flowDetail");
+  function show(i){
+    flowSel=i;
+    paths.forEach(function(p,j){p.setAttribute("fill",j===i?"var(--accent)":"var(--muted)");p.setAttribute("fill-opacity",j===i?.55:.3);});
+    var r=dests[i];
+    detail.innerHTML="<b>"+r.d+"</b>: "+r.n+" of "+N+" ownership questions ("+pct(r.n,N)+"). Resolved "+r.k+" of "+r.n+" ("+pct(r.k,r.n)+")."+(r.note?" "+r.note:"");
+  }
+  dests.forEach(function(r,i){
+    var sy=r.sy,dy=r.y,h=r.h;
+    var p=el("path",{d:"M"+(xL+nw)+","+sy+" C"+mx+","+sy+" "+mx+","+dy+" "+xR+","+dy+" L"+xR+","+(dy+h)+" C"+mx+","+(dy+h)+" "+mx+","+(sy+h)+" "+(xL+nw)+","+(sy+h)+" Z",fill:"var(--muted)","fill-opacity":.3},svg);
+    p.style.cursor="pointer";paths.push(p);
+    p.addEventListener("click",function(){show(i);});
+    bindTip(p,"<b>"+r.d+"</b><br>"+r.n+" questions, "+r.k+" resolved ("+pct(r.k,r.n)+")");
+    el("rect",{x:xR,y:dy,width:nw,height:Math.max(h,2),fill:"var(--ink3)"},svg);
+    var lc=dy+Math.max(h,24)/2;
+    var g=el("g",{},svg);g.style.cursor="pointer";
+    el("rect",{x:xR+nw+4,y:lc-18,width:W-xR-nw-4,height:36,fill:"transparent"},g);
+    txt(g,xR+nw+10,lc-2,r.d,{fill:"var(--ink)","font-size":fs});
+    txt(g,xR+nw+10,lc+15,r.k+" of "+r.n+" resolved ("+pct(r.k,r.n)+")",{fill:"var(--ink2)","font-size":"12"});
+    g.addEventListener("click",function(){show(i);});
+  });
+  el("rect",{x:xL,y:y0,width:nw,height:N*s,fill:"var(--ink3)"},svg);
+  if(narrow){var ht=txt(svg,0,16,"Nine DRIs",{fill:"var(--ink)","font-size":"13","font-weight":"600"});var hs=document.createElementNS(NS,"tspan");hs.setAttribute("fill","var(--ink2)");hs.setAttribute("font-weight","400");hs.setAttribute("font-size","12");hs.textContent="  "+N+" questions, "+pct(K,N)+" resolved";ht.appendChild(hs);}
+  else{
+  txt(svg,xL-8,y0+N*s/2-4,"Nine DRIs",{"text-anchor":"end",fill:"var(--ink)","font-size":fs,"font-weight":"600"});
+  txt(svg,xL-8,y0+N*s/2+14,N+" questions",{"text-anchor":"end",fill:"var(--ink2)","font-size":"12"});
+  txt(svg,xL-8,y0+N*s/2+30,pct(K,N)+" resolved",{"text-anchor":"end",fill:"var(--ink2)","font-size":"12"});}
+  show(flowSel);
+}
+
+/* ---------- simple bar helper ---------- */
+function bars(svgId,rows,opts){
+  var svg=document.getElementById(svgId);clear(svg);
+  var W=availW(svgId),narrow=W<560,x0=narrow?0:(opts.x0||210),xw=W-x0-52,rh=opts.rh||30,gapY=narrow?40:(opts.gap||18),y0=narrow?24:(opts.y0||12);
+  svg.setAttribute("viewBox","0 0 "+W+" "+(y0+rows.length*(rh+gapY)-gapY+8));
+  rows.forEach(function(r,i){
+    var y=y0+i*(rh+gapY),v=r.k/r.n;
+    if(narrow){var t=txt(svg,0,y-8,r.label,{fill:"var(--ink)","font-size":"13"});if(r.sub){var ts=document.createElementNS(NS,"tspan");ts.setAttribute("fill","var(--ink3)");ts.setAttribute("font-size","12");ts.textContent="  "+r.sub;t.appendChild(ts);}}
+    else{txt(svg,0,y+rh/2-2,r.label,{fill:"var(--ink)","font-size":"13"});if(r.sub)txt(svg,0,y+rh/2+14,r.sub,{fill:"var(--ink3)","font-size":"12"});}
+    el("rect",{x:x0,y:y,width:xw,height:rh,rx:4,fill:"var(--muted3)"},svg);
+    var b=el("rect",{x:x0,y:y,width:Math.max(v*xw,2),height:rh,rx:4,fill:r.hi?"var(--accent)":"var(--muted)"},svg);
+    bindTip(b,"<b>"+r.label+"</b><br>"+r.k+" of "+r.n+" resolved ("+pct(r.k,r.n)+")");
+    txt(svg,x0+xw+8,y+rh/2+5,pct(r.k,r.n),{fill:"var(--ink)","font-size":"14","font-weight":"600"});
+  });
+}
+var kindRows=[{label:"Decision, permission or review",sub:"41 questions",n:41,k:22,hi:true},{label:"Engineering work",sub:"50 questions",n:50,k:32}];
+var namedRows=[{label:"Named person",sub:"174 questions",n:174,k:104,hi:true},{label:"Group or channel",sub:"13 questions",n:13,k:5}];
+
+/* ---------- phase ---------- */
+var phaseData={
+  all:{rows:[{label:"Early phase",sub:"25 questions, 3 DRIs",n:25,k:11,hi:true},{label:"Live phase",sub:"127 questions, 8 DRIs",n:127,k:79}],text:"<b>All DRIs.</b> Early-phase states: 44% resolved (11 of 25). Live states: 62% (79 of 127). One-sided Fisher exact p = 0.07, not statistically clear."},
+  exH:{rows:[{label:"Early phase",sub:"9 questions, 2 DRIs",n:9,k:6,hi:true},{label:"Live phase",sub:"114 questions, 7 DRIs",n:114,k:78}],text:"<b>Excluding DRI H.</b> Early-phase and live rates are the same: 67% (6 of 9) and 68% (78 of 114). 16 of the 25 early-phase questions came from DRI H."},
+  H:{rows:[{label:"DRI H, early phase",sub:"16 questions",n:16,k:5,hi:true},{label:"Other DRIs, early phase",sub:"9 questions",n:9,k:6},{label:"DRI H, live phase",sub:"13 questions",n:13,k:5,hi:true},{label:"Other DRIs, live phase",sub:"114 questions",n:114,k:78}],text:"<b>DRI H against the other DRIs, within each phase.</b> 31% against 67% in the early phase, and 38% against 68% in the live phase. Stratified permutation test: one-sided p = 0.007."}
+};
+var phaseSel="all";
+function setPhase(k){
+  phaseSel=k;
+  bars("phaseChart",phaseData[k].rows,{x0:230,rh:30,gap:22,y0:12});
+  document.getElementById("phaseDetail").innerHTML=phaseData[k].text;
+  [].forEach.call(document.querySelectorAll("[data-ph]"),function(b){b.setAttribute("aria-pressed",b.dataset.ph===k?"true":"false");});
+}
+[].forEach.call(document.querySelectorAll("[data-ph]"),function(b){b.addEventListener("click",function(){setPhase(b.dataset.ph);});});
+
+function drawAll(){
+  drawMix();drawForest();drawFlow();
+  bars("kind",kindRows,{x0:230,rh:32,gap:24,y0:14});
+  bars("named",namedRows,{x0:130,rh:30,gap:24,y0:14});
+  setPhase(phaseSel);
+}
+drawAll();
+var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(drawAll,150);});
+
+/* ---------- timeline ---------- */
+var tl=[
+  {date:"2026-07-31",label:"Jul 31",head:"DRI authority to enable messaging is posted",more:"The implementation lead posts to the DRI group in a cross-team channel that DRIs can enable messaging for a client in node settings, \"no ticket needed.\"",key:true},
+  {date:"2026-08-04",label:"Aug 4",head:"Compliance-report toggle notice",more:"A notice to the DRI group in the same channel describes a compliance-report toggle."},
+  {date:"2026-08-18",label:"Aug 18",head:"An action on an engineering-owned field is corrected",more:"A DRI moves a Linear issue to \"ready to start.\" An engineering manager replies that this \"should only be done by an assignee.\""},
+  {date:"2026-10-16",label:"Oct 16",head:"Staging permission given in under one minute",more:"A DRI asks an engineer for permission to enable a node in staging. Permission is given in under one minute."},
+  {date:"2026-10-27",label:"Oct 27",head:"Production messaging described in a client meeting, no owner named",more:"In a client meeting, production messaging is described as able to \"go anytime\" once turned on. No owner is named."},
+  {date:"2026-10-28",label:"Oct 28",head:"A DRI asks who can enable production messaging",more:"A DRI asks in a state channel who can enable production messaging. Responses describe the step without naming an owner or citing the Jul 31 post.",key:true},
+  {date:"2026-10-29",label:"Oct 29",head:"The DRI enables it; authority is restated",more:"The DRI enables production messaging, 29 hours after the client's request. The implementation lead then writes that \"DRIs can control what compliance forms are turned on\" through node settings."}
+];
+(function(){
+  var ol=document.getElementById("timeline"),prev=null;
+  tl.forEach(function(e){
+    var d=new Date(e.date+"T12:00:00");
+    if(prev){var days=Math.round((d-prev)/864e5);var gp=document.createElement("li");gp.className="gap"+(days>=30?" long":"");gp.textContent=days===1?"1 day later":days+" days later";gp.setAttribute("aria-hidden","true");ol.appendChild(gp);}
+    prev=d;
+    var li=document.createElement("li");if(e.key)li.className="key";
+    li.innerHTML='<span class="dot"></span><button type="button" class="item" aria-expanded="false"><div class="date">'+e.label+'</div><div class="head">'+e.head+'</div><div class="more">'+e.more+'</div></button>';
+    var b=li.querySelector("button");b.addEventListener("click",function(){b.setAttribute("aria-expanded",b.getAttribute("aria-expanded")==="true"?"false":"true");});
+    ol.appendChild(li);
+  });
+})();
+
+/* ---------- unowned items ---------- */
+var items=[
+  {q:"Which portal settings a DRI may change in production without approval",raised:"Oct 28",owner:"None",rec:"Messaging (Jul 31) and compliance-report toggles (Aug 4) are covered in writing. Other production settings are not. How the Aug 18 rule that only assignees change issue status applies to DRIs is not stated."},
+  {q:"Whether subrecipients with agreements executed Oct 22 can submit a required milestone schedule",raised:"Oct 28",owner:"Ticket assignee; no reply to the question",rec:"The engineering ticket has been \"In Progress\" since Oct 1, with no updates since Oct 2 and no comments."},
+  {q:"The correct process for environmental-review project areas in one state",raised:"Oct 28",owner:"None",rec:"The DRI's premise was marked incorrect. The correct process was not given in writing."},
+  {q:"Four reporting-configuration items in one state (grant manager assignments, access level, two identifier sources)",raised:"Oct 29",owner:"None",rec:"No reply to the four items. The modules were reported \"configured\" the same evening."},
+  {q:"Who writes user acceptance test scripts for one state going forward",raised:"Oct 29",owner:"None",rec:"A recovery plan of Oct 30 assigns one script to the embedded engineer. A standing assignment is not documented."}
+];
+(function(){
+  var box=document.getElementById("items");
+  items.forEach(function(it){
+    var d=document.createElement("details");
+    d.innerHTML='<summary><div><div class="q">'+it.q+'</div><div class="meta">First raised '+it.raised+'</div></div><span class="pill'+(it.owner==="None"?" none":"")+'">Owner: '+it.owner+'</span></summary><div class="body">'+it.rec+'</div>';
+    box.appendChild(d);
+  });
+})();
+})();
+</script>
+</body>
+</html>
