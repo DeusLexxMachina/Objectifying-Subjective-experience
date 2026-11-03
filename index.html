@@ -128,6 +128,25 @@ svg text{font-family:inherit}
 footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding:20px 0 40px}
 @media (max-width:520px){.seg{display:flex;flex-wrap:wrap;border-radius:14px}.seg button{padding:5px 10px}}
 .hint{font-size:13px;color:var(--ink3);margin:-14px 0 16px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:8px 0 4px}
+.flowline .stage{position:relative;padding:12px 12px 12px 14px;border:1px solid var(--rule);background:var(--bg);margin-right:-1px}
+.flowline .stage:first-child{border-radius:10px 0 0 10px}.flowline .stage:last-child{border-radius:0 10px 10px 0}
+.flowline .stage .d{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.flowline .stage .h{font-weight:600;font-size:14px;margin:2px 0}
+.flowline .stage .x{font-size:13px;color:var(--ink2)}
+.flowline .stage.hot{background:var(--accent-soft);border-color:var(--accent)}
+@media (max-width:760px){.flowline{grid-template-columns:1fr}.flowline .stage{margin:0 0 -1px 0}.flowline .stage:first-child{border-radius:10px 10px 0 0}.flowline .stage:last-child{border-radius:0 0 10px 10px}}
+.where{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.where{grid-template-columns:1fr}}
+.where div{border:1px solid var(--rule);border-radius:10px;padding:14px;background:var(--bg)}
+.where b{display:block;margin-bottom:4px}
+.where span{font-size:14px;color:var(--ink2)}
+.toplinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btnlink{display:inline-block;font-size:14px;text-decoration:none;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:999px}
+.btnlink:hover{border-color:var(--accent)}
+.btnlink.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.crosslink{display:block;text-decoration:none;color:inherit;border:1px dashed var(--accent);border-radius:var(--radius);padding:16px 18px;margin:0 0 20px;background:var(--accent-soft)}
+.crosslink b{color:var(--accent-ink)}
 @media print{nav.steps,.toolbar,.pager,.tip{display:none!important}section.panel{display:block!important;break-inside:avoid-page;margin-bottom:32px}}
 </style>
 </head>
@@ -136,6 +155,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
   <p class="eyebrow">Record review · July 31 to October 29, 2026 · Prepared November 2, 2026</p>
   <h1>Ownership Questions Across the DRI Team</h1>
   <p class="lede">How written questions about ownership, authority and sign-off from the nine DRIs were answered over 90 days, measured against factual questions and against other participants.</p>
+  <div class="toplinks"><span class="btnlink primary">Team record</span><a class="btnlink" href="record.html">One DRI's record (DRI H)</a></div>
 </header>
 
 <nav class="steps" aria-label="Sections">
@@ -150,15 +170,46 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 0 -->
   <section class="panel" id="overview" data-title="At a glance">
-    <p class="kicker">Overview</p>
+    <p class="kicker"></p>
     <h2>At a glance</h2>
     <p class="sub">Select a figure to open the section it comes from. Use the arrow keys or the buttons at the bottom of each section to move through the review.</p>
     <div class="grid g4" id="stats"></div>
+    <a class="crosslink" href="record.html" style="margin-top:20px"><b>One DRI's record.</b> The case behind this review: DRI H's answer rate to others against the rate for DRI H's own questions, side-by-side contrasts, acting first against asking first, DRI H's own errors, and the adjustments DRI H has adopted.</a>
+  </section>
+
+
+  <!-- background -->
+  <section class="panel" id="background" data-title="Background">
+    <p class="kicker"></p>
+    <h2>Background: how DRIs learn what they may decide</h2>
+    <p class="sub">Context for the sections that follow. A DRI often needs an answer to two questions at the moment a client asks for something: who decides this, and am I allowed to do it myself.</p>
+    <div class="card">
+      <h3>Where rules about DRI authority appeared in the reviewed record</h3>
+      <p class="note" style="margin:0 0 12px">No single written reference listing DRI permissions or decision owners was found.</p>
+      <div class="where">
+        <div><b>Announcements</b><span>Single posts to the DRI group in a cross-team channel: messaging (Jul 31) and compliance-report toggles (Aug 4). Neither thread has a reply or a follow-up.</span></div>
+        <div><b>Corrections after the fact</b><span>A rule stated in reply to an action that broke it: who may change an issue's status (Aug 18).</span></div>
+        <div><b>Thread answers</b><span>A rule restated in a state channel after the action it governed had been taken (Oct 29).</span></div>
+        <div><b>Meetings</b><span>Spoken statements with no owner recorded (Oct 27). Huddles and direct messages were not reviewed.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>One rule, from statement to use</h3>
+      <p class="note" style="margin:0 0 12px">The permission to enable client messaging, as it appears in the record.</p>
+      <div class="flowline">
+        <div class="stage"><div class="d">Jul 31</div><div class="h">Stated once</div><div class="x">Posted to the DRI group: DRIs can turn it on in node settings, "no ticket needed." No replies.</div></div>
+        <div class="stage"><div class="d">Jul 31 to Oct 28</div><div class="h">89 days</div><div class="x">No follow-up in the thread. Projects in flight; DRIs cover several states; absences occur.</div></div>
+        <div class="stage hot"><div class="d">Oct 28</div><div class="h">Needed</div><div class="x">A client asks for it. A DRI asks who can enable it. No respondent names an owner or cites the post.</div></div>
+        <div class="stage"><div class="d">Oct 29</div><div class="h">Acted on</div><div class="x">The DRI enables it, 29 hours after the client's request, and records uncertainty in writing.</div></div>
+        <div class="stage"><div class="d">Oct 29, evening</div><div class="h">Restated</div><div class="x">The implementation lead writes that DRIs control these settings.</div></div>
+      </div>
+    </div>
+    <p>The sections that follow measure what happened when DRIs asked: how often ownership questions were answered, by whom, and what resolution depended on.</p>
   </section>
 
   <!-- 1 -->
   <section class="panel" id="scope" data-title="Scope and method">
-    <p class="kicker">Section 1</p>
+    <p class="kicker"></p>
     <h2>Scope and method</h2>
     <p class="sub">What was reviewed, and how each question was coded.</p>
     <div class="card">
@@ -177,7 +228,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 2 -->
   <section class="panel" id="resolution" data-title="Ownership vs factual">
-    <p class="kicker">Section 2</p>
+    <p class="kicker"></p>
     <h2>Ownership questions resolve less often than factual questions</h2>
     <p class="sub">Across the nine DRIs, 58% of ownership questions were resolved (109 of 187), against 76% of factual questions (100 of 131). Ownership questions from other participants were resolved 73% of the time (92 of 126). The median first reply came after 0.83 hours for ownership questions and 0.2 hours for factual ones.</p>
     <div class="card">
@@ -198,7 +249,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 3 -->
   <section class="panel" id="addressees" data-title="Where questions go">
-    <p class="kicker">Section 3</p>
+    <p class="kicker"></p>
     <h2>Where ownership questions go</h2>
     <p class="sub">Half of DRI ownership questions (91 of 187) named an engineer as the first recipient.</p>
     <div class="card">
@@ -232,7 +283,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 4 -->
   <section class="panel" id="phase" data-title="Project phase">
-    <p class="kicker">Section 4</p>
+    <p class="kicker"></p>
     <h2>Project phase</h2>
     <p class="sub">States were classed by phase during the period. Two states that started in or near July, and one state in the month before its September launch, are early. All other active states are live. One dormant state and the six cross-team channels are excluded.</p>
     <div class="card">
@@ -254,10 +305,11 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 5 -->
   <section class="panel" id="rights" data-title="Decision rights">
-    <p class="kicker">Section 5</p>
+    <p class="kicker"></p>
     <h2>Decision rights in the written record</h2>
     <p class="sub">No single written list of the portal settings a DRI may change in production, with or without approval, was found in the reviewed sources. Statements of DRI authority appear as individual channel posts. Select an entry to read the record.</p>
     <div class="card"><ol class="tl" id="timeline"></ol></div>
+    <a class="crosslink" href="record.html#contrasts"><b>Same situation, different response.</b> Seven side-by-side contrasts from one DRI's record: the same question asked by different people, the same kind of action received two ways, and an assignment that changed hands twice in two weeks. Open One DRI's record.</a>
     <ol class="obs">
       <li>The authority statement that applied on Oct 28 had been posted 89 days earlier. None of the Oct 28 responses referred to it.</li>
       <li>The same DRI acted without prior confirmation twice. The action on an engineering-owned field (issue status) was corrected. The action on a portal node setting was endorsed.</li>
@@ -267,7 +319,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 6 -->
   <section class="panel" id="depended" data-title="What resolution depended on">
-    <p class="kicker">Section 6</p>
+    <p class="kicker"></p>
     <h2>What resolution depended on</h2>
     <p class="sub">Five conditions in the record that went with a question being resolved or not.</p>
     <div class="grid g2">
@@ -295,7 +347,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 7 -->
   <section class="panel" id="unowned" data-title="No owner of record">
-    <p class="kicker">Section 7</p>
+    <p class="kicker"></p>
     <h2>Items with no owner of record, as of November 1</h2>
     <p class="sub">Five ownership questions raised in writing on Oct 28 and Oct 29 have no named owner or recorded decision in Slack, email, Linear or meeting notes. Select an item for the record.</p>
     <div class="items" id="items"></div>
@@ -303,7 +355,7 @@ footer{border-top:1px solid var(--rule);color:var(--ink3);font-size:13px;padding
 
   <!-- 8 -->
   <section class="panel" id="limits" data-title="Limits">
-    <p class="kicker">Section 8</p>
+    <p class="kicker"></p>
     <h2>Limits of the evidence</h2>
     <p class="sub">What this review can and cannot show.</p>
     <div class="card"><ul class="clean">
@@ -342,6 +394,7 @@ var panels=[].slice.call(document.querySelectorAll("section.panel"));
 var stepsEl=document.getElementById("steps"),bar=document.getElementById("bar");
 var cur=0;
 panels.forEach(function(p,i){
+  var kk=p.querySelector(".kicker");if(kk)kk.textContent=i?"Section "+i:"Overview";
   var b=document.createElement("button");b.className="step";b.type="button";
   b.innerHTML=(i?'<span class="n">'+i+'</span>':'')+p.dataset.title;
   b.addEventListener("click",function(){go(i,true);});
